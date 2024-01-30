@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# Fail is any command fails
-set -e
-
-
-# ibmcloud ce app list
-
-
 ibmcloud login --apikey q7nQI-xUIML6alQ-spQVoAMB0e5KJz9kLRghBozrxB7U -r us-south
 
 iam_token=$(ibmcloud iam oauth-tokens)
@@ -28,9 +21,10 @@ CRN=crn:v1:bluemix:public:power-iaas:dal10:a/736c7cd58317415b8d28a03e0e81eaf5:88
 # Verificar la región
 
 if [ "$hora_actual" -eq 2 ]; then
-  curl -X PUT https://us-south.power-iaas.cloud.ibm.com/pcloud/v1/cloud-instances/$id_workspace/pvm-instances/$id_vsi -H "Authorization: Bearer $token" -H 'CRN: $CRN' -H 'Content-Type: application/json' -d '{"memory": 2}'
-elif [ "$hora_actual" -eq 18 ]; then
-  curl -X PUT https://us-south.power-iaas.cloud.ibm.com/pcloud/v1/cloud-instances/$id_workspace/pvm-instances/$id_vsi -H "Authorization: Bearer $token" -H 'CRN: $CRN' -H 'Content-Type: application/json' -d '{"memory": 4}'
+  curl -X PUT https://us-south.power-iaas.cloud.ibm.com/pcloud/v1/cloud-instances/$id_workspace/pvm-instances/$id_vsi -H "Authorization: Bearer $token" -H "CRN: $CRN" -H 'Content-Type: application/json' -d '{"memory": 2}'
+elif [ "$hora_actual" -ge 8 ]; then
+  curl -X PUT https://us-south.power-iaas.cloud.ibm.com/pcloud/v1/cloud-instances/$id_workspace/pvm-instances/$id_vsi -H "Authorization: Bearer $token" -H "CRN: $CRN" -H 'Content-Type: application/json' -d '{"memory": 4}'
+  echo "\nActualizado a 4" 
 else
   echo "No es hora"
 fi
