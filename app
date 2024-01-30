@@ -20,10 +20,10 @@ CRN=crn:v1:bluemix:public:power-iaas:dal10:a/736c7cd58317415b8d28a03e0e81eaf5:88
 
 # Verificar la región
 
-if [ "$hora_actual" -eq 2 ]; then
+if [ "$hora_actual" -eq 18 ]; then
   curl -X PUT https://us-south.power-iaas.cloud.ibm.com/pcloud/v1/cloud-instances/$id_workspace/pvm-instances/$id_vsi -H "Authorization: Bearer $token" -H "CRN: $CRN" -H 'Content-Type: application/json' -d '{"memory": 2}'
   echo -e "\nActualizado a 2" 
-elif [ "$hora_actual" -eq 18 ]; then
+elif [ "$hora_actual" -eq 2 ]; then
   curl -X PUT https://us-south.power-iaas.cloud.ibm.com/pcloud/v1/cloud-instances/$id_workspace/pvm-instances/$id_vsi -H "Authorization: Bearer $token" -H "CRN: $CRN" -H 'Content-Type: application/json' -d '{"memory": 4}'
   echo -e "\nActualizado a 4" 
 else
