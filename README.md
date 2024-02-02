@@ -172,8 +172,13 @@ Dentro de su proyecto de Code engine diríjase a la sección **Event subscriptio
 0 7/16 * * *
 ```
 que ejecutará la aplicación todos los días a las 2 AM y 6 PM hora Bogotá. Puede encontrar en la referencias una página a un generador de expresiones en cron que da a detalle lo que se crea y demás información de este tipo de expresiones.
-  
-
+ - **Custom event data (optional)**: Dejar por defecto. Dé click en **Next**.
+ - **Event consumer**
+   - **Component type**: Seleccione **Application**.
+   - **Name**: Seleccione el nombre de su aplicación.
+   - Dé click en **Next**.
+ - Dé click en **Create**.
+Con esto ya queda programado el escalamiento de la aplicación en los horarios deseados.
 
 
 
