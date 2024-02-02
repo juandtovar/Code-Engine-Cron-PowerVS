@@ -69,7 +69,7 @@ Reemplazar ```NOMBRE_LLAVE``` por el nombre que le hayamos colocado a la llave s
 ```
 pbcopy < NOMBRE_LLAVE.pub
 ```
-Repita este paso una vez más pero cambiando el **Key type** a Signing Key.
+Reemplazar ```NOMBRE_LLAVE``` por el nombre que le hayamos colocado a la llave ssh. Repita este paso una vez más pero cambiando el **Key type** a Signing Key.
 
 
 
