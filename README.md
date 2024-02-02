@@ -162,4 +162,24 @@ Dentro de su proyecto de Code engine diríjase a la sección **Event subscriptio
    - **Event subscription name**: Un nombre para el temporizador.
    - Dé click en **Next**.
  - **Schedule**
-   - **Cron expression**: Aquí se configura cada cuánto quierer correr la aplicación, para este caso se debe programar todos los días cada **16** horas a partir de las 2 AM hora Bogotá (GMT -5) o **7** AM hora Greenwich (GMT 0), esto se logra colocando el valor "0 7/16 * * *" que ejecutará la aplicación todos los días a las 2AM y 6 PM hora Bogotá. https://crontab.cronhub.io/
+   - **Cron expression**: Aquí se configura cada cuánto quierer correr la aplicación, para este caso se debe programar todos los días cada **16** horas a partir de las 2 AM hora Bogotá (GMT -5) o **7** AM hora Greenwich (GMT 0), esto se logra colocando el valor "0 7/16 * * *" que ejecutará la aplicación todos los días a las 2AM y 6 PM hora Bogotá. Puede encontrar en la referencias una página a un generador de expresiones en cron que da a detalle lo que se crea y demás información de este tipo de expresiones.
+  
+
+
+
+
+
+
+# Referencias
+ - https://github.com/IBM/CodeEngine/tree/main/bash
+ - https://cloud.ibm.com/apidocs/power-cloud#pcloud-pvminstances-put
+ - https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+ - https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
+ - https://crontab.cronhub.io/
+
+
+
+
+
+
+Autores: IBM Cloud Tech Sales - Juan Diego Tovar Cárdenas.
