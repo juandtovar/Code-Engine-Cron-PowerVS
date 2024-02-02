@@ -140,6 +140,7 @@ De en **Create** y espere a que se cree su proyecto, una vez finalizada la creac
          - **Secret contents** > **Target registry**: Seleccione la opción Dockerhub.
          - **Username**: Su usuario de dockerhub.
          - **Access token**: EL _access token_ creado anteriormente.
+         - Dé click en **Create**.
        - Deben aparecer actualizados los siguientes apartados:
          - **Registry server**: Debe contener el valor "https://index.docker.io/v1/".
          - **Registry secret**: El nombre que se le colocó al secreto.
