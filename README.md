@@ -108,7 +108,7 @@ Descargue los archivos de este repositorio y cree uno nuevo CONFIGURELO DE MANER
 ### Crear aplicación en Code Engine
 En IBM Cloud entre al apartado **Catalog** > **Containers** > **Code Engine** > **Projects** > **Create**.
 
-<!-- INSERTAR GIF DE IBM CLOUD -->
+<img width="700" alt="workspace" src="images/code_engine.gif">
 
 Complete los valores de las variables:
  - **Location**: Seleccione una de las localizaciones para desplegar sus aplicaciones de Code Engine, no necesariamente debe ser donde esté la instancia de Power.
