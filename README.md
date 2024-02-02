@@ -129,6 +129,7 @@ De en **Create** y espere a que se cree su proyecto, una vez finalizada la creac
          ```
          pbcopy < NOMBRE_LLAVE
          ```
+         - Dé click en **Create**.
      - **Strategy**
        - **Dockerfile**: Debe contener el valor "Dockerfile".
        - **Timeout**: Dejarlo por default (10m).
