@@ -152,7 +152,7 @@ De en **Create** y espere a que se cree su proyecto, una vez finalizada la creac
  - **Optional settings**: Dejar valores por defecto.
  - Dé click en **Create**
 
-Se empezará a construir la imagen, se demora aproximadamente minutos 4 minutos y luego se desplegará la aplicación, se demora aproximadamente 2 minutos. Una vez desplegada nuestra aplicación puede correrla manualmente yendo al apartado **Application** y dar en **Open URL** de nuestra aplicación, verá que se abré una nueva pestaña (toma unos segundos en cargar) y verá una serie de mensaje de consola y un mensaje al final "No es hora", "Actualizado a 2" o Actualizado a 4" dependiendo de si es la hora que se programó el escalamiento.
+Se empezará a construir la imagen, se demora aproximadamente minutos 4 minutos y luego se desplegará la aplicación, se demora aproximadamente 2 minutos. Una vez desplegada nuestra aplicación puede correrla manualmente yendo al apartado **Application** y dar en **Open URL** de nuestra aplicación, verá que se abré una nueva pestaña (toma unos segundos en cargar) y verá una serie de mensajes de consola y un mensaje al final "No es hora", "Actualizado a 2" o Actualizado a 4" dependiendo de si es la hora que se programó el escalamiento.
 
 
 
