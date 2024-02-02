@@ -5,14 +5,30 @@ _Este repositorio contiene los archivos necesarios para generar una aplicación 
 
 
 
+## Índice
+
+1. [Descripción del Repositorio](#descripción-del-repositorio)
+2. [Prerrequisitos](#prerrequisitos)
+3. [Procedimiento](#procedimiento)
+    - [Crear llave SSH para GitHub](#1-crear-llave-ssh-para-github)
+    - [Creación de token de acceso de Docker Hub](#2-creación-token-de-acceso-de-dockerhub)
+    - [Crear repositorio en GitHub](#3-crear-repositorio-en-github)
+    - [Crear aplicación en Code Engine](#4-crear-aplicación-en-code-engine)
+    - [Crear suscripción por eventos de Cron](#5-crear-suscripción-por-eventos-de-cron)
+4. [Referencias](#referencias)
+5. [Autores](#autores)
+
+
+
+
 
 
 ## Prerrequisitos
- - Tener una cuenta en [IBM Cloud](https://cloud.ibm.com/) con un grupo de recursos disponible (puede ser el _Default_).
- - Una api key para la cuenta de IBM Cloud.
- - Un espacio de trabajo de Power en IBM Cloud con un VSI.
- - Tener una cuenta de [Docker Hub](https://hub.docker.com/) o cualquier servicio en línea que proporcione un registro de contenedores para la plataforma Docker.
- - Tener una cuenta de [Github](https://github.com).
+1. Tener una cuenta en [IBM Cloud](https://cloud.ibm.com/) con un grupo de recursos disponible (puede ser el _Default_).
+2. Una api key para la cuenta de IBM Cloud.
+3. Un espacio de trabajo de Power en IBM Cloud con una instancia de VSI.
+4. Tener una cuenta en [Docker Hub](https://hub.docker.com/) o cualquier servicio en línea que proporcione un registro de contenedores para la plataforma Docker.
+5. Tener una cuenta de [GitHub](https://github.com).
 
 
 
@@ -184,12 +200,14 @@ Con esto ya queda programado el escalamiento de la aplicación en los horarios d
 
 
 
-# Referencias
- - https://github.com/IBM/CodeEngine/tree/main/bash
- - https://cloud.ibm.com/apidocs/power-cloud#pcloud-pvminstances-put
- - https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
- - https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
- - https://crontab.cronhub.io/
+## Referencias
+
+- [IBM Code Engine Bash Scripts](https://github.com/IBM/CodeEngine/tree/main/bash)
+- [IBM Power Cloud API Documentation](https://cloud.ibm.com/apidocs/power-cloud#pcloud-pvminstances-put)
+- [GitHub SSH Key Generation](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+- [GitHub SSH Key Addition](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+- [Cron Expression Generator](https://crontab.cronhub.io/)
+
 
 
 
