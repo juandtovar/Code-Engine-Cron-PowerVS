@@ -8,7 +8,7 @@ iam_token=$(ibmcloud iam oauth-tokens)
 token=$(echo "$iam_token" | awk -F"Bearer " '{print $2}')
 
 # Imprimir el token
-echo "IAM token: $token"
+# echo "IAM token: $token"
 
 hora_actual=$(date +%H)
 
@@ -17,8 +17,6 @@ id_workspace=ID_WORKSPACE_POWER
 id_vsi=ID_VSI_POWER
 
 CRN=CRN_WORKSPACE_POWER
-
-# Verificar la región
 
 if [ "$hora_actual" -eq 18 ]; then
   curl -X PUT https://us-south.power-iaas.cloud.ibm.com/pcloud/v1/cloud-instances/$id_workspace/pvm-instances/$id_vsi -H "Authorization: Bearer $token" -H "CRN: $CRN" -H 'Content-Type: application/json' -d '{"memory": 2}'
