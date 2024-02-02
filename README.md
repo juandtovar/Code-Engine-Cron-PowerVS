@@ -1,6 +1,12 @@
 # Code-Engine-Cron-PowerVS
 _Este repositorio contiene los archivos necesarios para generar una aplicación en Code Engine en IBM Cloud que modifique los parámetros de un VSI de Power previamente creado usando suscripciones por eventos de Cron_
 
+
+
+
+
+
+
 ## Prerrequisitos
  - Tener una cuenta en [IBM Cloud](https://cloud.ibm.com/) con un grupo de recursos disponible (puede ser el _Default_).
  - Una api key para la cuenta de IBM Cloud.
@@ -8,20 +14,96 @@ _Este repositorio contiene los archivos necesarios para generar una aplicación 
  - Tener una cuenta de [Docker Hub](https://hub.docker.com/) o cualquier servicio en línea que proporcione un registro de contenedores para la plataforma Docker.
  - Tener una cuenta de [Github](https://github.com).
 
+
+
+
+
+
+
+
 ## Procedimiento
 
-<!-- FALTA EL PEDAZO DE CREACIÓN DE LA LLAVE DE ACCESO SSH PARA GITHUB-->
+### Crear llave ssh para Github
+En la terminal de nuestra máquina debemos ingresar el siguiente comando
+```
+ssh-keygen -t ed25519 -C "CORREO"
+```
+Reemplazando ```CORREO``` por nuestro correo de inicio de sesión de Github, nos pedirá ingresar un nombre para la llave ssh y luego una _passphrase_ es importante que dejemos este espacio en blanco y solo dar enter, esto creara dos archivos con dos llaves, una privada y una pública en archivos del mismo nombre pero en el caso de la pública se obtiene la extensión .pub. Debemos copiar el archivo de la llave privada a la carpeta de archivos ssh de la máquina, esto se logra mediante
+```
+cp  NOMBRE_LLAVE ~/.ssh
+```
+Reemplazando ```NOMBRE_LLAVE``` por el nombre que le hayamos colocado a la llave ssh. Ahora debemos agregar la llave a un _ssh-agent_ para ello debemos realizar los siguientes pasos:
+1. Iniciar el _ssh-agent_, use el comando
+```
+eval "$(ssh-agent -s)"
+```
+Debe obtener un salida del tipo ```Agent pid #```.
 
-<!-- FALTA EL PEDAZO DE CREACIÓN DE LA LLAVE DE ACCESO PARA DOCKERHUB-->
+2. Modificar el archivo de configuración de las llave ssh, acceda a él madiante el comando
+```
+open ~/.ssh/config
+```
+Si obtenemos un mensaje de que el archivo no existe debemos crearlo mediante
+```
+touch ~/.ssh/config
+```
+Y usar nuevamente el comando ```open```. Una vez dentro de este archivo debemos colocar lo siguiente
+```
+Host github.com
+  IgnoreUnknown UseKeychain
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/NOMBRE_LLAVE
+```
+Reemplazar ```NOMBRE_LLAVE``` por el nombre que le hayamos colocado a la llave ssh y guardar.
+
+3. Agregar la llave al _ssh-agent_, esto se logra madiante el comando
+```
+ssh-add --apple-use-keychain ~/.ssh/NOMBRE_LLAVE
+```
+Reemplazar ```NOMBRE_LLAVE``` por el nombre que le hayamos colocado a la llave ssh. Debemos obtener una salida del tipo ```Identity added: /Users/USUARIO/.ssh/NOMBRE_LLAVE (CORREO)```
+
+4. Agregar la llave ssh a Github, diríjase a su cuenta de Github y dé click en su foto de perfil arriba a la derecha **Settings** > **SSH and GPG keys** > **New SSH key** y llene los valores de la siguiente manera:
+ - **Title**: Un nombre para identificar la llave ssh en Github.
+ - **Key type**: Selecciona Athentication Key.
+ - **Key**: Copie y pegue la llave pública en este espacio, preferiblemente usar el comando
+```
+pbcopy < NOMBRE_LLAVE.pub
+```
+Repita este paso una vez más pero cambiando el **Key type** a Signing Key.
+
+
+
+
+
+
+
+### Creación token de acceso de Dockerhub
+Acceda a su cuenta de Dockerhub y dé click en su foto de perfil arriba a la derecha **My Account** > **Security** > **New Access Token** y llene los valores de la siguiente manera:
+ - **Access Token Description**: Un nombre para identificar el token de acceso a crear.
+ - **Access permissions**: Seleccione "Read, Write, Delete".
+ - Dé click en **Generate**.
+Tendrá un token de acceso a su cuenta de Dockerhub, guardar este valor para futuros accesos, tenga en cuenta que no podrá volver a acceder a este valor.
+
+
+
+
+
+
 
 ### Crear repositorio en Github
-Puede clonar este repositorio o descargar su contenido y crear uno desde cero. Cuando ya esté creado ingrese al archivo _app_ y modifique los siguientes parámetros:
+Descargue los archivos de este repositorio y cree uno nuevo CONFIGURELO DE MANERA PRIVADA YA QUE COLOCAREMOS INFORMACIÓN DE ACCESO A SU CUENTA DE IBM CLOUD. Cuando ya esté creado ingrese al archivo _app_ y modifique los siguientes parámetros:
  - En la línea ```ibmcloud login --apikey APIKEY -r REGION``` reemplace el valor de ```APIKEY``` y ```REGION``` por su api key de su cuenta de IBM Cloud y la región correspondiente.
  - En la línea ```id_workspace=ID_WORKSPACE_POWER``` reemplace el valor de ```ID_WORKSPACE_POWER``` por el ID de su espacio de trabajo de Power en IBM Cloud.
  - En la línea ```id_vsi=ID_VSI_POWER``` reemplace el valor de ```ID_VSI_POWER``` por el ID de su VSI en el espacio de trabajo de Power.
  - En la línea ```CRN=CRN_WORKSPACE_POWER``` reemplace el valor de ```CRN_WORKSPACE_POWER``` por el CRN del espacio de trabajo de Power en IBM Cloud.
  - En las líneas de los comandos ```if``` y ```elif``` verifique las horas a las que desea realizar las modificaciones dentro del condicional ```[ "$hora_actual" -eq h ]```, reemplace el valor de ```h``` por la hora deseada (de 0 a 23), puede agregar más de estos casos si así lo desea.
  - En las líneas de los comandos ```curl``` verifique al final que se modifica el parámetro deseado con el valor deseado, por ejemplo ```'{"memory": 2}'``` para modificar la memoria RAM a 2 GB.
+
+
+
+
+
+
 
 ### Crear aplicación en Code Engine
 En IBM Cloud entre al apartado **Catalog** > **Containers** > **Code Engine** > **Projects** > **Create**.
@@ -66,6 +148,12 @@ De en **Create** y espere a que se cree su proyecto, una vez finalizada la creac
  - Dé click en **Create**
 
 Se empezará a construir la imagen, se demora aproximadamente minutos 4 minutos y luego se desplegará la aplicación, se demora aproximadamente minutos 2 minutos. Una vez desplegada nuestra aplicación puede correrla manualmente yendo al apartado **Application** y dar en **Open URL** de nuestra aplicación, verá que se abré una nueva pestaña (toma unos segundos en cargar) y verá una serie de mensaje de consola y un mensaje al final "No es hora", "Actualizado a 2" o Actualizado a 4" dependiendo de si es la hora que se programó el escalamiento.
+
+
+
+
+
+
 
 ### Crear suscripción por eventos de Cron
 Dentro de su proyecto de Code engine diríjase a la sección **Event subscriptions** > **Create**, aquí se programará la ejecución de la aplicación por horas.
