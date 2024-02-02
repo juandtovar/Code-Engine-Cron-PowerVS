@@ -9,6 +9,11 @@ _Este repositorio contiene los archivos necesarios para generar una aplicación 
  - Tener una cuenta de [Github](https://github.com).
 
 ## Procedimiento
+
+<!-- FALTA EL PEDAZO DE CREACIÓN DE LA LLAVE DE ACCESO SSH PARA GITHUB-->
+
+<!-- FALTA EL PEDAZO DE CREACIÓN DE LA LLAVE DE ACCESO PARA DOCKERHUB-->
+
 ### Crear repositorio en Github
 Puede clonar este repositorio o descargar su contenido y crear uno desde cero. Cuando ya esté creado ingrese al archivo _app_ y modifique los siguientes parámetros:
  - En la línea ```ibmcloud login --apikey APIKEY -r REGION``` reemplace el valor de ```APIKEY``` y ```REGION``` por su api key de su cuenta de IBM Cloud y la región correspondiente.
@@ -19,5 +24,47 @@ Puede clonar este repositorio o descargar su contenido y crear uno desde cero. C
  - En las líneas de los comandos ```curl``` verifique al final que se modifica el parámetro deseado con el valor deseado, por ejemplo ```'{"memory": 2}'``` para modificar la memoria RAM a 2 GB.
 
 ### Crear aplicación en Code Engine
+En IBM Cloud entre al apartado **Catalog** > **Containers** > **Code Engine** > **Projects** > **Create**.
+
+<!-- INSERTAR GIF DE IBM CLOUD -->
+
+Complete los valores de las variables:
+ - **Location**: Seleccione una de las localizaciones para desplegar sus aplicaciones de Code Engine, no necesariamente debe ser donde esté la instancia de Power.
+ - **Name**: Un nombre para su proyecto de Code Engine.
+ - **Resource group**: El grupo de recursos de su cuenta de IBM Cloud donde creará su proyecto de Code Engine.
+
+De en **Create** y espere a que se cree su proyecto, una vez finalizada la creación de click sobre su proyecto y diríjase a la sección **Applications** > **Create**, allí llene los siguientes campos:
+ - **General**
+   - **Name**: Un nombre para su aplicación de Code Engine.
+ - **Code**: Seleccione la opción **Source code**
+   - **Code repo URL**: El link ssh de su repositorio en Github, para generarlo vaya a su repositorio en Github y entre al apartado **Code** > **Local** > **SSH**.
+   - **Specify build details**
+     - **Source**
+       - **Code repo URL**: Debe aperecer el que ya se colocó anteriormente.
+       - **Code repo access**: Aquí usaremos la llave ssh privada creada anteriormente para el repositorio, de click en las opciones y seleccione **Create code repo access**.
+         - **Secret name**: Un nombre para el secreto de la llave ssh privada.
+         - **SSH private key**: El valor de la llave ssh privada, puede cargar su valor desde el archivo que tenga en su máquina.
+     - **Strategy**
+       - **Dockerfile**: Debe contener el valor "Dockerfile".
+       - **Timeout**: Dejarlo por default (10m).
+       - **Build resources**: Seleccionar "S (0.5vCPU / 2 GB)".
+     - **Output**: En este apartado puede configurar su servicio en línea que proporcione un registro de contenedores para la plataforma Docker, se presenta cómo hacerlo para Dockerhub.
+       - **Registry name** > **Add**
+         - **Secret name**: Un nombre para el secreto de su llave de acceso a Dockerhub.
+         - **Secret contents** > **Target registry**: Seleccione la opción Dockerhub.
+         - **Username**: Su usuario de dockerhub.
+         - **Access token**: EL _access token_ creado anteriormente.
+       - Deben aparecer actualizados los siguientes apartados:
+         - **Registry server**: Debe contener el valor "https://index.docker.io/v1/".
+         - **Registry secret**: El nombre que se le colocó al secreto.
+         - **Namespace**: Su usuario de Dockerhub.
+         - **Repository (image name)**: Puede ingresar un nombre para su repositorio en Dockerhub, preferiblemente uno con el cual identificar la imagen que se va a crear.
+         - Dé click en **Done**.
+- **Resources & scaling**: Se recomienda dejar los valores por defecto a excepción de **CPU and memory** el cual se recomienda seleccionar el mínimo para esta aplicación (se puede moficiar más adelante).
+- **Domain mappings**: Seleccionar public.
+- **Optional settings**: Dejar valores por defecto.
+- Dé click en **Create**
+
+
 
 ### Crear suscripción por eventos de Cron
