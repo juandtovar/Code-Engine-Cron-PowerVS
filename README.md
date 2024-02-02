@@ -97,7 +97,7 @@ Descargue los archivos de este repositorio y cree uno nuevo CONFIGURELO DE MANER
  - En la línea ```id_vsi=ID_VSI_POWER``` reemplace el valor de ```ID_VSI_POWER``` por el ID de su VSI en el espacio de trabajo de Power.
  - En la línea ```CRN=CRN_WORKSPACE_POWER``` reemplace el valor de ```CRN_WORKSPACE_POWER``` por el CRN del espacio de trabajo de Power en IBM Cloud.
  - En las líneas de los comandos ```if``` y ```elif``` verifique las horas a las que desea realizar las modificaciones dentro del condicional ```[ "$hora_actual" -eq h ]```, reemplace el valor de ```h``` por la hora deseada (de 0 a 23), puede agregar más de estos casos si así lo desea.
- - En las líneas de los comandos ```curl``` verifique al final que se modifica el parámetro deseado con el valor deseado, por ejemplo ```'{"memory": 2}'``` para modificar la memoria RAM a 2 GB.
+ - En las líneas de los comandos ```curl``` verifique que la región luego de "https://" corresponde con la de su instancias de power y verifique al final que se modifica el parámetro deseado con el valor deseado, por ejemplo ```'{"memory": 2}'``` para modificar la memoria RAM a 2 GB.
 
 
 
