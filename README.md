@@ -12,7 +12,7 @@ _Este repositorio contiene los archivos necesarios para generar una aplicación 
 1. [Prerrequisitos](#prerrequisitos)
 2. [Procedimiento](#procedimiento)
     - [Crear llave SSH para GitHub](#1-crear-llave-ssh-para-github)
-    - [Creación de token de acceso de Docker Hub](#2-creación-token-de-acceso-de-dockerhub)
+    - [Crear token de acceso de Docker Hub](#2-creación-token-de-acceso-de-dockerhub)
     - [Crear repositorio en GitHub](#3-crear-repositorio-en-github)
     - [Crear aplicación en Code Engine](#4-crear-aplicación-en-code-engine)
     - [Crear suscripción por eventos de Cron](#5-crear-suscripción-por-eventos-de-cron)
@@ -94,7 +94,7 @@ Reemplazar ```NOMBRE_LLAVE``` por el nombre que le hayamos colocado a la llave s
 
 
 
-### Creación token de acceso de Dockerhub
+### Crear token de acceso de Dockerhub
 Acceda a su cuenta de Dockerhub y dé click en su foto de perfil arriba a la derecha **My Account** > **Security** > **New Access Token** y llene los valores de la siguiente manera:
  - **Access Token Description**: Un nombre para identificar el token de acceso a crear.
  - **Access permissions**: Seleccione "Read, Write, Delete".
