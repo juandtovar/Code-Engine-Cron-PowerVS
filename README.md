@@ -5,18 +5,19 @@ _Este repositorio contiene los archivos necesarios para generar una aplicación 
 
 
 
+
+
 ## Índice
 
-1. [Descripción del Repositorio](#descripción-del-repositorio)
-2. [Prerrequisitos](#prerrequisitos)
-3. [Procedimiento](#procedimiento)
+1. [Prerrequisitos](#prerrequisitos)
+2. [Procedimiento](#procedimiento)
     - [Crear llave SSH para GitHub](#1-crear-llave-ssh-para-github)
     - [Creación de token de acceso de Docker Hub](#2-creación-token-de-acceso-de-dockerhub)
     - [Crear repositorio en GitHub](#3-crear-repositorio-en-github)
     - [Crear aplicación en Code Engine](#4-crear-aplicación-en-code-engine)
     - [Crear suscripción por eventos de Cron](#5-crear-suscripción-por-eventos-de-cron)
-4. [Referencias](#referencias)
-5. [Autores](#autores)
+3. [Referencias](#referencias)
+
 
 
 
