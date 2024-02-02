@@ -60,13 +60,18 @@ De en **Create** y espere a que se cree su proyecto, una vez finalizada la creac
          - **Namespace**: Su usuario de Dockerhub.
          - **Repository (image name)**: Puede ingresar un nombre para su repositorio en Dockerhub, preferiblemente uno con el cual identificar la imagen que se va a crear.
          - Dé click en **Done**.
-- **Resources & scaling**: Se recomienda dejar los valores por defecto a excepción de **CPU and memory** el cual se recomienda seleccionar el mínimo para esta aplicación (se puede moficiar más adelante).
-- **Domain mappings**: Seleccionar public.
-- **Optional settings**: Dejar valores por defecto.
-- Dé click en **Create**
+ - **Resources & scaling**: Se recomienda dejar los valores por defecto a excepción de **CPU and memory** el cual se recomienda seleccionar el mínimo para esta aplicación (se puede moficiar más adelante).
+ - **Domain mappings**: Seleccionar public.
+ - **Optional settings**: Dejar valores por defecto.
+ - Dé click en **Create**
 
-Se empezará a construir la imagen, se demora aproximadamente minutos 3 minutos y luego se desplegará la aplicación 
-
-
+Se empezará a construir la imagen, se demora aproximadamente minutos 4 minutos y luego se desplegará la aplicación, se demora aproximadamente minutos 2 minutos. Una vez desplegada nuestra aplicación puede correrla manualmente yendo al apartado **Application** y dar en **Open URL** de nuestra aplicación, verá que se abré una nueva pestaña (toma unos segundos en cargar) y verá una serie de mensaje de consola y un mensaje al final "No es hora", "Actualizado a 2" o Actualizado a 4" dependiendo de si es la hora que se programó el escalamiento.
 
 ### Crear suscripción por eventos de Cron
+Dentro de su proyecto de Code engine diríjase a la sección **Event subscriptions** > **Create**, aquí se programará la ejecución de la aplicación por horas.
+ - **General**
+   - **Event type**: Seleccione _Periodic timer_
+   - **Event subscription name**: Un nombre para el temporizador.
+   - Dé click en **Next**.
+ - **Schedule**
+   - **Cron expression**: Aquí se configura cada cuánto quierer correr la aplicación, para este caso se debe programar todos los días cada **16** horas a partir de las 2 AM hora Bogotá (GMT -5) o **7** AM hora Greenwich (GMT 0), esto se logra colocando el valor "0 7/16 * * *" que ejecutará la aplicación todos los días a las 2AM y 6 PM hora Bogotá. https://crontab.cronhub.io/
