@@ -30,7 +30,7 @@ ssh-keygen -t ed25519 -C "CORREO"
 ```
 Reemplazando ```CORREO``` por nuestro correo de inicio de sesión de Github, nos pedirá ingresar un nombre para la llave ssh y luego una _passphrase_ es importante que dejemos este último espacio en blanco y solo dar enter, esto creara dos archivos con dos llaves, una privada y una pública en archivos del mismo nombre pero en el caso de la pública se obtiene la extensión .pub. Debemos copiar el archivo de la llave privada a la carpeta de archivos ssh de la máquina, esto se logra mediante
 ```
-cp  NOMBRE_LLAVE ~/.ssh
+cp NOMBRE_LLAVE ~/.ssh
 ```
 Reemplazando ```NOMBRE_LLAVE``` por el nombre que le hayamos colocado a la llave ssh. Ahora debemos agregar la llave a un _ssh-agent_ para ello debemos realizar los siguientes pasos:
 1. Iniciar el _ssh-agent_, use el comando
