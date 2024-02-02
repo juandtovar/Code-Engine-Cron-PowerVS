@@ -65,6 +65,8 @@ De en **Create** y espere a que se cree su proyecto, una vez finalizada la creac
 - **Optional settings**: Dejar valores por defecto.
 - Dé click en **Create**
 
+Se empezará a construir la imagen, se demora aproximadamente minutos 3 minutos y luego se desplegará la aplicación 
+
 
 
 ### Crear suscripción por eventos de Cron
