@@ -125,7 +125,10 @@ De en **Create** y espere a que se cree su proyecto, una vez finalizada la creac
        - **Code repo URL**: Debe aperecer el que ya se colocó anteriormente.
        - **Code repo access**: Aquí usaremos la llave ssh privada creada anteriormente para el repositorio, de click en las opciones y seleccione **Create code repo access**.
          - **Secret name**: Un nombre para el secreto de la llave ssh privada.
-         - **SSH private key**: El valor de la llave ssh privada, puede cargar su valor desde el archivo que tenga en su máquina.
+         - **SSH private key**: El valor de la llave ssh privada, puede cargar su valor desde el archivo que tenga en su máquina o copiarla usando el comando
+         ```
+         pbcopy < NOMBRE_LLAVE
+         ```
      - **Strategy**
        - **Dockerfile**: Debe contener el valor "Dockerfile".
        - **Timeout**: Dejarlo por default (10m).
